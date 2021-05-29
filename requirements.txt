@@ -1,0 +1,8 @@
+1. send email
+2. send email with picture
+3. read from config file which directory to read pictures from, pick first picture
+4. keep log of pictures sent to prevent duplicates
+5. Allow multiple email addresses
+6. Allow multiple picture input directories for each email addresses
+7. put on a cron
+8. explore using google pictures cloud directory

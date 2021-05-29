@@ -1,4 +1,5 @@
 1. send email
+1a. ask for password in cli (warning, special characters in password may need to be escaped - i.e. $ -> \$)
 2. send email with picture
 3. read from config file which directory to read pictures from, pick first picture
 4. keep log of pictures sent to prevent duplicates
@@ -6,3 +7,6 @@
 6. Allow multiple picture input directories for each email addresses
 7. put on a cron
 8. explore using google pictures cloud directory
+9. support linux directories ?
+10. Use json input for config instead?
+11. add first time setup to encrypt password

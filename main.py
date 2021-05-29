@@ -1,8 +1,7 @@
 # Import smtplib for the actual sending function
 # https://realpython.com/python-send-email/
-import smtplib
+import smtplib, ssl
 from email.message import EmailMessage
-
 
 def send_email(name):
     # Use a breakpoint in the code line below to debug your script.
@@ -20,9 +19,6 @@ def send_email(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     send_email('Hello test1')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-
 
 # # Import smtplib for the actual sending function
 # import smtplib  https://docs.python.org/3/library/email.examples.html

@@ -10,3 +10,4 @@
 9. support linux directories ?
 10. Use json input for config instead?
 11. add first time setup to encrypt password
+12. implement OAuth2 and resecure google account (less secure app login setting)

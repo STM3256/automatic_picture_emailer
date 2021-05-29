@@ -2,7 +2,10 @@
 automatic_picture_emailer - Auto emails pictures to configured address. Convenient for Skylight picture frames
 
 # Requirements
-Python 3
+1. Install Python 3
+2. Add to PATH
+3. use PIP to install ```smtplib``` (pip install smtplib)
+
 
 # How to use
 1. Add appropriate configurations in ```config.ini```

@@ -10,6 +10,7 @@ def send_email(name):
     msg['Subject'] = f'A picture for you'
     msg['From'] = input("Enter the sender email address: ")  # Enter your address
     msg['To'] = input("Enter the receiver email address: ")  # Enter receiver address
+    msg.set_content("I thought you might want to see this picture :) -STM")
 
     port = 465  # For SSL
     password = input(f"Type the password to send from {msg['From']} and press enter (special characters may need to be escaped): ")

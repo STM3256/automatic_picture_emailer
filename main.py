@@ -12,7 +12,7 @@ def send_email(name):
     msg['To'] = input("enter the receiver email address: ")  # Enter receiver address
 
     port = 465  # For SSL
-    password = input(f"Type the password to send from {msg['From']} and press enter: ")
+    password = input(f"Type the password to send from {msg['From']} and press enter (special characters may need to be escaped): ")
 
     message = """
     This message is sent from Python."""

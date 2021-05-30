@@ -1,6 +1,6 @@
 (done) 1. send email
 (done) 1a. ask for password in cli (warning, special characters in password may need to be escaped - i.e. $ -> \$)
-2. send email with picture
+(done) 2. send email with picture
 3. read from config file which directory to read pictures from, pick first picture
 4. keep log of pictures sent to prevent duplicates
 5. Allow multiple email addresses

@@ -1,6 +1,6 @@
 # Import smtplib for the actual sending function
 # https://realpython.com/python-send-email/
-import smtplib, ssl
+import smtplib, ssl, imghdr
 from email.message import EmailMessage
 
 def send_email(name):
@@ -8,8 +8,8 @@ def send_email(name):
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
     msg = EmailMessage()
     msg['Subject'] = f'A picture for you'
-    msg['From'] = input("enter the sender email address: ")  # Enter your address
-    msg['To'] = input("enter the receiver email address: ")  # Enter receiver address
+    msg['From'] = input("Enter the sender email address: ")  # Enter your address
+    msg['To'] = input("Enter the receiver email address: ")  # Enter receiver address
 
     port = 465  # For SSL
     password = input(f"Type the password to send from {msg['From']} and press enter (special characters may need to be escaped): ")
@@ -20,9 +20,17 @@ def send_email(name):
     # Create a secure SSL context
     context = ssl.create_default_context()
 
+    # Get picture directory
+    file = input("Picture file location: ")
+
+    # Get MIME subtype for image and attach to email
+    with open(file, 'rb') as fp:
+        img_data = fp.read()
+    msg.add_attachment(img_data, maintype='image',
+                       subtype=imghdr.what(None, img_data))
+
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(msg['From'], password)
-        #server.sendmail(sender_email, receiver_email, message)
         server.send_message(msg)
 
 

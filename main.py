@@ -1,28 +1,47 @@
 # Import smtplib for the actual sending function
 # https://realpython.com/python-send-email/
-import smtplib, ssl, imghdr
+import pathlib
+import smtplib, ssl, imghdr, configparser, os
 from email.message import EmailMessage
 
 def send_email(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    print(f'Hi, {name}')
     msg = EmailMessage()
+
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    msg['From'] = config['input settings']['email']
+    picture_directory = config['input settings']['directory']
+    msg['To'] = config['output settings']['email']
+
+    # get list of files in picture_directory
+    print("picture_directory")
+    print(picture_directory)
+    true_path = picture_directory.strip('\"')
+    print("path")
+    print(true_path)
+
+    print("all values")
+    all_files = os.listdir(true_path)
+    print(all_files)
+
+    print("first value")
+    first_file = all_files[0]
+    print(first_file)
+
+    print("abs")
+    first_file_absolute = true_path+os.path.sep+first_file
+    print(first_file_absolute)
+    file = first_file_absolute
+
     msg['Subject'] = f'A picture for you'
-    msg['From'] = input("Enter the sender email address: ")  # Enter your address
-    msg['To'] = input("Enter the receiver email address: ")  # Enter receiver address
     msg.set_content("I thought you might want to see this picture :) -STM")
 
     port = 465  # For SSL
     password = input(f"Type the password to send from {msg['From']} and press enter (special characters may need to be escaped): ")
 
-    message = """
-    This message is sent from Python."""
-
     # Create a secure SSL context
     context = ssl.create_default_context()
-
-    # Get picture directory
-    file = input("Picture file location: ")
 
     # Get MIME subtype for image and attach to email
     with open(file, 'rb') as fp:
@@ -38,33 +57,3 @@ def send_email(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     send_email('Hello test1')
-
-# # Import smtplib for the actual sending function
-# import smtplib  https://docs.python.org/3/library/email.examples.html
-#
-# # And imghdr to find the types of our images
-# import imghdr
-#
-# # Here are the email package modules we'll need
-# from email.message import EmailMessage
-#
-# # Create the container email message.
-# msg = EmailMessage()
-# msg['Subject'] = 'Our family reunion'
-# # me == the sender's email address
-# # family = the list of all recipients' email addresses
-# msg['From'] = me
-# msg['To'] = ', '.join(family)
-# msg.preamble = 'You will not see this in a MIME-aware mail reader.\n'
-#
-# # Open the files in binary mode.  Use imghdr to figure out the
-# # MIME subtype for each specific image.
-# for file in pngfiles:
-#     with open(file, 'rb') as fp:
-#         img_data = fp.read()
-#     msg.add_attachment(img_data, maintype='image',
-#                                  subtype=imghdr.what(None, img_data))
-#
-# # Send the email via our own SMTP server.
-# with smtplib.SMTP('localhost') as s:
-#     s.send_message(msg)

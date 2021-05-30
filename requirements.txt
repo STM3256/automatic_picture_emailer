@@ -1,7 +1,7 @@
 (done) 1. send email
 (done) 1a. ask for password in cli (warning, special characters in password may need to be escaped - i.e. $ -> \$)
 (done) 2. send email with picture
-3. read from config file which directory to read pictures from, pick first picture
+(done)3. read from config file which directory to read pictures from, pick first picture
 4. keep log of pictures sent to prevent duplicates
 5. Allow multiple email addresses
 6. Allow multiple picture input directories for each email addresses
@@ -11,3 +11,5 @@
 10. Use json input for config instead?
 11. add first time setup to encrypt password
 12. implement OAuth2 and resecure google account (less secure app login setting)
+
+(bug) gmail authorization not working: https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-gmail-smtp
